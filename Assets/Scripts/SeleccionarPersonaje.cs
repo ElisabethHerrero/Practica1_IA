@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class SeleccionarPersonaje : MonoBehaviour
 {
@@ -37,4 +39,24 @@ public class SeleccionarPersonaje : MonoBehaviour
     {
         imagenPersonaje.sprite = personajes[indiceActual];
     }
+
+
+    //De paso ponemos aqui el resto de botones
+
+    public void Jugar()
+    {
+
+        SceneManager.LoadScene(2);
+        
+
+    }
+
+    public void Salir()
+    {
+        
+    }
+
+
+
+
 }

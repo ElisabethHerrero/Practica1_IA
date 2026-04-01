@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -40,4 +43,5 @@ public class MainMenu : MonoBehaviour
 
         t.localScale = new Vector3(width / canvasSize.x, height / canvasSize.y, 1f);
     }
+
 }
