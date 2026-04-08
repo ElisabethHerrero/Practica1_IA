@@ -17,11 +17,20 @@ public class PatrolState : State
     public override void Update()
     {
         // Detectar jugador
-        if (npc.DistanceToPlayer() < npc.detectionRange)
+        if(npc.CheckVision())
         {
             npc.ChangeState(new ChaseState(npc));
             return;
         }
+
+        /*
+        if (npc.DistanceToPlayer() < npc.detectionRange)
+        {
+
+            npc.ChangeState(new ChaseState(npc));
+            return;
+        }
+        */
 
         // Si llega al punto, ir al siguiente
         if (!npc.agent.pathPending && npc.agent.remainingDistance < 0.5f)
