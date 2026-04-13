@@ -18,6 +18,10 @@ public class NPCController : MonoBehaviour
 
     private State currentState;
 
+    //
+
+    public int vida = 100;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();

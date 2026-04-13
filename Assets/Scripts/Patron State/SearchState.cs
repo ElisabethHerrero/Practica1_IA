@@ -39,6 +39,12 @@ public class SearchState : State
                 npc.ChangeState(new PatrolState(npc));
             }
         }
+
+        //muere
+        if (npc.vida == 0)
+        {
+            npc.ChangeState(new MorirState(npc));
+        }
     }
 
     public override void Exit() { }

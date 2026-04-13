@@ -21,6 +21,13 @@ public class ChaseState : State
         {
             npc.ChangeState(new SearchState(npc));
         }
+
+        //
+
+        if (npc.vida == 0)
+        {
+            npc.ChangeState(new MorirState(npc));
+        }
     }
 
     public override void Exit() { }
