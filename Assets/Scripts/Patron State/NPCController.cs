@@ -92,6 +92,8 @@ public class NPCController : MonoBehaviour
 
     public bool CheckVision()
     {
+        if (player == null) return false;
+
         // ---------- DIRECCIÓN Y DISTANCIA ----------
 
         // Vector desde el enemigo hacia el jugador (dirección)
@@ -128,6 +130,12 @@ public class NPCController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void AlertByTrap(Transform detectedPlayer)
+    {
+        player = detectedPlayer;
+        ChangeState(new ChaseState(this));
     }
 
     private void OnDrawGizmos()

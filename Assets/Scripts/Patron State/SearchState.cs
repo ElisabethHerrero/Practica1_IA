@@ -14,8 +14,16 @@ public class SearchState : State
 
     public override void Enter()
     {
-        //Esto mira la info que tenemos del jugador y se dirige a esa posición
-        lastKnownPosition = npc.player.position;
+        if (npc.player != null)
+        {
+            lastKnownPosition = npc.player.position;
+        }
+        else
+        {
+            //Esto mira la info que tenemos del jugador y se dirige a esa posición
+            lastKnownPosition = npc.transform.position;
+        }
+
         npc.agent.destination = lastKnownPosition;
         timer = searchTime;
     }
@@ -41,7 +49,7 @@ public class SearchState : State
         }
 
         //muere
-        if (npc.vida == 0)
+        if (npc.vida <= 0)
         {
             npc.ChangeState(new MorirState(npc));
         }

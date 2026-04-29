@@ -14,17 +14,24 @@ public class ChaseState : State
 
     public override void Update()
     {
+        if (npc.player == null)
+        {
+            npc.ChangeState(new PatrolState(npc));
+            return;
+        }
+
         npc.agent.destination = npc.player.position;
 
         // Si pierde al jugador lo buscar
         if (npc.DistanceToPlayer() > npc.loseRange)
         {
             npc.ChangeState(new SearchState(npc));
+            return;
         }
 
         //
 
-        if (npc.vida == 0)
+        if (npc.vida <= 0)
         {
             npc.ChangeState(new MorirState(npc));
         }
