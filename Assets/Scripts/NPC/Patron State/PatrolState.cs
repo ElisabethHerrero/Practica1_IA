@@ -38,10 +38,6 @@ public class PatrolState : State
             GoToNextPoint();
         }
 
-        if (npc.vida == 0)
-        {
-            npc.ChangeState(new MorirState(npc));
-        }
     }
 
     public override void Exit() { }
