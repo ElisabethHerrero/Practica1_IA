@@ -14,7 +14,7 @@ public class CoinSpawner : MonoBehaviour
 
     public float navMeshSearchRadius = 1f; //Radio para buscar un punto válido para spawnear monedas en el NavMesh (es decir, dentro de un radio de 1 alrededor del punto aleatorio escogido y si hay NavMesh en ese radio sí se generará
     public float minDistanceBetweenCoins = 2f; //Distancia mínima entre monedas
-    public float coinHeight = 1f; //Altura para que no queden enterradas en el suelo
+    public float coinHeight = 1.3f; //Altura para que no queden enterradas en el suelo
 
     // NUEVO → evitar que aparezcan dentro de muebles/obstáculos
     public LayerMask obstacleLayer;
