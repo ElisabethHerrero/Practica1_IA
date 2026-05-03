@@ -71,7 +71,6 @@ public class NPCController : MonoBehaviour
     public Collider Attack;
 
 
-
     public void OnTriggerEnter(Collider other)
     {
         if (other == Detection)
@@ -84,7 +83,7 @@ public class NPCController : MonoBehaviour
                 playerInRange = true;       // Marcamos que está dentro del rango
             }
         }
-
+        /*
         if (other == Attack) 
         { 
             if (other.CompareTag("Player"))
@@ -92,7 +91,7 @@ public class NPCController : MonoBehaviour
                 other.GetComponent<VidaPlayer>()?.CogerDaño(20);
             }
         
-        }
+        }*/
     }
 
     private void OnTriggerExit(Collider other)

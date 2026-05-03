@@ -11,7 +11,8 @@ public class AttackState : State
 
     public override void Enter()
     {
-        
+        Debug.Log("Voy a atacar");
+        Attack = npc.Attack;
     }
 
     public override void Update()
@@ -20,6 +21,34 @@ public class AttackState : State
         {
             
             lastAttack = Time.time;
+        }
+
+        if (npc.DistanceToPlayer() > 10f)
+        {
+            npc.ChangeState(new ChaseState(npc));
+        }
+
+       
+    }
+
+    public Collider Attack;
+    
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Está atacando");
+
+        if (other == Attack)
+        {
+            Debug.Log("Está atacando2");
+            
+
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Está atacando3");
+            other.GetComponent<VidaPlayer>()?.CogerDaño(20);
         }
     }
 

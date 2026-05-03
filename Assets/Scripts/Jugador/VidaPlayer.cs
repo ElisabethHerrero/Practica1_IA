@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VidaPlayer : MonoBehaviour
 {
-    public int vidaMax = 100;
+    public int vidaMax = 10;
     private int vidaActual;
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class VidaPlayer : MonoBehaviour
 
     void Morir()
     {
-
+        Debug.Log("Murió el jugador");
     }
 
 }
