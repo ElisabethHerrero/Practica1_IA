@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VidaPlayer : MonoBehaviour
 {
-    public int vidaMax = 0;
+    public int vidaMax = 100;
     private int vidaActual;
 
     // Start is called before the first frame update

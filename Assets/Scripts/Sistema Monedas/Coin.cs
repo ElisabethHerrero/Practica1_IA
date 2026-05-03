@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -11,7 +9,11 @@ public class Coin : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & playerLayer) != 0)
         {
-            coinManager.AddCoin();
+            if (coinManager != null)
+            {
+                coinManager.AddCoin();
+            }
+
             Destroy(gameObject);
         }
     }
