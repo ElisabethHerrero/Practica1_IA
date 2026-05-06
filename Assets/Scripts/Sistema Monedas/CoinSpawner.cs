@@ -16,9 +16,12 @@ public class CoinSpawner : MonoBehaviour
     public float minDistanceBetweenCoins = 2f; //Distancia mínima entre monedas
     public float coinHeight = 1.3f; //Altura para que no queden enterradas en el suelo
 
-    // NUEVO → evitar que aparezcan dentro de muebles/obstáculos
+    // Evitar que aparezcan dentro de muebles/obstáculos
     public LayerMask obstacleLayer;
     public float obstacleCheckRadius = 0.8f;
+
+    // NUEVO → margen vertical para comprobar el volumen real donde estará la moneda
+    public float obstacleCheckHeight = 1.5f;
 
     private void Start()
     {
@@ -44,14 +47,17 @@ public class CoinSpawner : MonoBehaviour
             {
                 Vector3 spawnPosition = hit.position;  //Si encuentra un punto válido, usamos esa posición
 
+                // NUEVO → posición real donde aparecerá la moneda
+                Vector3 finalCoinPosition = spawnPosition + Vector3.up * coinHeight;
+
                 //Comprobamos que no esté demasiado cerca de otras monedas
                 // Y además que no esté dentro de un obstáculo
-                if (IsFarEnough(spawnPosition, spawnedPositions, coinsSpawned) && !IsInsideObstacle(spawnPosition))
+                if (IsFarEnough(spawnPosition, spawnedPositions, coinsSpawned) && !IsInsideObstacle(finalCoinPosition))
                 {
                     //Creamos la moneda en esa posición
                     GameObject coin = Instantiate(
                         coinPrefab,
-                        spawnPosition + Vector3.up * coinHeight, //La elevamos un poco
+                        finalCoinPosition, //La elevamos un poco
                         coinPrefab.transform.rotation //Usamos la rotación del prefab (en vez de Quaternion.identity)
                     );
 
@@ -69,6 +75,11 @@ public class CoinSpawner : MonoBehaviour
                     coinsSpawned++;
                 }
             }
+        }
+
+        if (coinsSpawned < numberOfCoins)
+        {
+            Debug.LogWarning("No se pudieron generar todas las monedas. Generadas: " + coinsSpawned + "/" + numberOfCoins);
         }
     }
 
@@ -98,10 +109,15 @@ public class CoinSpawner : MonoBehaviour
     // NUEVO → comprueba si la moneda caería dentro de un mueble/obstáculo
     bool IsInsideObstacle(Vector3 position)
     {
-        return Physics.CheckSphere(
-            position,
+        Vector3 point1 = position + Vector3.up * obstacleCheckHeight;
+        Vector3 point2 = position - Vector3.up * obstacleCheckHeight;
+
+        return Physics.CheckCapsule(
+            point1,
+            point2,
             obstacleCheckRadius,
-            obstacleLayer
+            obstacleLayer,
+            QueryTriggerInteraction.Ignore
         );
     }
 
@@ -111,7 +127,7 @@ public class CoinSpawner : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(center, size);
 
-        // NUEVO → ver radio de comprobación de obstáculos
+        // Ver radio de comprobación de obstáculos
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, obstacleCheckRadius);
     }

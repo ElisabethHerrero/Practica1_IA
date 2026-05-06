@@ -25366,7 +25366,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8618067441421451024, guid: 204245b8b0fcc074c9594f354bd25ba4,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8618067441421451024, guid: 204245b8b0fcc074c9594f354bd25ba4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -59132,6 +59138,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   obstacleCheckRadius: 0.8
+  obstacleCheckHeight: 1.5
 --- !u!4 &1169905167
 Transform:
   m_ObjectHideFlags: 0
