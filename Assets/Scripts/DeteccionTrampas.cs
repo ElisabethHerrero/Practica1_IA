@@ -1,9 +1,10 @@
-using UnityEngine; 
+using UnityEngine;
 
 public class TrapDetection : MonoBehaviour
 {
-    public NPCController[] npcsToAlert; //Lista de NPCs que serán avisados cuando se active la trampa
     public LayerMask playerLayer; //Layer del jugador para detectar solo al player
+
+    public float alertRadius = 10f; //Distancia máxima a la que la trampa avisa a los NPCs cercanos
 
     private bool activated = false; //Indica si la trampa ya ha sido activada
     public float cooldownTime = 10f; //Tiempo que tarda la trampa en reactivarse
@@ -21,7 +22,7 @@ public class TrapDetection : MonoBehaviour
     void Update()
     {
         if (isOnCooldown) //Si la trampa está en cooldown
-        { 
+        {
             timer -= Time.deltaTime; //Restamos tiempo cada frame (cuenta atrás)
 
             if (timer <= 0f)
@@ -39,18 +40,30 @@ public class TrapDetection : MonoBehaviour
         {
             activated = true;
 
-            foreach (NPCController npc in npcsToAlert) //Avisamos a todos los NPCs de la lista
-            {
-                if (npc != null)
-                {
-                    npc.AlertByTrap(other.transform); //Persigue al jugador
-                }
-            }
-          
+            AlertNearbyNPCs(other.transform); //Avisamos automáticamente a los NPCs cercanos a la trampa
+
             trapCollider.enabled = false;   //Desactivamos el collider para que no se vuelva a activar inmediatamente
 
             isOnCooldown = true; //Activamos el cooldown
             timer = cooldownTime;
+        }
+    }
+
+    void AlertNearbyNPCs(Transform playerTransform) //Busca todos los NPCs de la escena y avisa solo a los que están cerca
+    {
+        NPCController[] allNPCs = FindObjectsOfType<NPCController>(); //Encuentra todos los objetos de la escena que tengan NPCController
+
+        foreach (NPCController npc in allNPCs) //Recorremos todos los NPCs encontrados
+        {
+            if (npc != null)
+            {
+                float distanceToTrap = Vector3.Distance(transform.position, npc.transform.position); //Calculamos la distancia entre la trampa y el NPC
+
+                if (distanceToTrap <= alertRadius) //Si el NPC está dentro del radio de alerta
+                {
+                    npc.AlertByTrap(playerTransform); //Persigue al jugador
+                }
+            }
         }
     }
 
@@ -59,5 +72,11 @@ public class TrapDetection : MonoBehaviour
         activated = false;
         isOnCooldown = false;
         trapCollider.enabled = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, alertRadius); //Dibuja el radio de alerta de la trampa en la escena
     }
 }
