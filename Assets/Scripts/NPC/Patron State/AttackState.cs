@@ -12,7 +12,7 @@ public class AttackState : State
     public override void Enter()
     {
         Debug.Log("Voy a atacar");
-        Attack = npc.Attack;
+        
     }
 
     public override void Update()

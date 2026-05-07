@@ -61,51 +61,22 @@ public class NPCController : MonoBehaviour
     public LayerMask playerLayer;     // Capa donde está el jugador
     public LayerMask obstacleLayer;   // Capa de obstáculos (paredes, etc.)
 
-    //private Transform player;         // Referencia al jugador cuando entra en rango
-    private bool playerInRange = false; // Indica si el jugador está dentro del trigger
+    
 
 
 
     //Aquí para dañar
-    public Collider Detection;
-    public Collider Attack;
+    
 
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other == Detection)
-        {
-
-            // Comprobamos si el objeto que entra pertenece a la capa del jugador
-            if (((1 << other.gameObject.layer) & playerLayer) != 0)
-            {
-                player = other.transform;   // Guardamos referencia al jugador
-                playerInRange = true;       // Marcamos que está dentro del rango
-            }
-        }
-        /*
-        if (other == Attack) 
-        { 
-            if (other.CompareTag("Player"))
-            {
-                other.GetComponent<VidaPlayer>()?.CogerDaño(20);
-            }
         
-        }*/
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other == Detection)
-        {
-            // Si el que sale es el jugador, dejamos de seguirlo
-            if (other.transform == player)
-            {
-                playerInRange = false;  // Ya no está en rango
-                player = null;          // Eliminamos la referencia
-            }
-        }
-
+        
         
     }
 
