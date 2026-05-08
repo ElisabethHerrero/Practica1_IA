@@ -1129,7 +1129,7 @@ MonoBehaviour:
   previousButton: {fileID: 689341927}
   nextButton: {fileID: 81620557}
   instructions:
-  - "\xA1Bienvenido, joven estudiante!"
+  - "\xA1Buenas noches y bienvenido, joven estudiante!"
   - "\xBFEstas listo para tu examen final de Defensa para Magos I?"
   - La prueba consistira en un recorrido por la mazmorra de la escuela.
   - Deberas recolectar como minimo 25 puntos de energia magica.
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   - "\xA1Ten cuidado tambien con las trampas!"
   - Si las pisas, los fantasmas sabran donde estas.
   - Cuando hayas cumplido el objetivo, busca el portal iluminado de rosa.
-  - Tras ello, colocate sobre el y presiona A.
+  - Tras ello, colocate sobre el y presiona R.
   - "\xA1Eso es todo! \xA1Buena suerte!"
 --- !u!1 &1238631483
 GameObject:

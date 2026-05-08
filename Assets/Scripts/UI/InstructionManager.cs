@@ -36,7 +36,7 @@ public class InstructionManager : MonoBehaviour
 
         "Cuando hayas cumplido el objetivo, busca el portal iluminado de rosa.",
 
-        "Tras ello, colocate sobre el y presiona A.",
+        "Tras ello, colocate sobre el y presiona R.",
 
         "¡Eso es todo! ¡Buena suerte!"
     };
