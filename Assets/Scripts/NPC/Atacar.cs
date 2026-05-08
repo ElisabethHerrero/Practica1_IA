@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Atacar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Collider attackCollider;
+
+    public void Attack()
     {
-        
+        StartCoroutine(AttackRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    private System.Collections.IEnumerator AttackRoutine()
     {
-        
+        attackCollider.enabled = true;
+
+        yield return new WaitForSeconds(0.2f);
+
+        attackCollider.enabled = false;
     }
 }

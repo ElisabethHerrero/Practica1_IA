@@ -19,7 +19,8 @@ public class AttackState : State
     {
         if (Time.time >= lastAttack + cooldown)
         {
-            
+            npc.attackController.Attack();
+
             lastAttack = Time.time;
         }
 
@@ -30,27 +31,6 @@ public class AttackState : State
 
        
     }
-
-    public Collider Attack;
     
-
-    public void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Está atacando");
-
-        if (other == Attack)
-        {
-            Debug.Log("Está atacando2");
-            
-
-        }
-
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Está atacando3");
-            other.GetComponent<VidaPlayer>()?.CogerDaño(20);
-        }
-    }
-
     public override void Exit() { }
 }

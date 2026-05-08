@@ -61,12 +61,14 @@ public class NPCController : MonoBehaviour
     public LayerMask playerLayer;     // Capa donde está el jugador
     public LayerMask obstacleLayer;   // Capa de obstáculos (paredes, etc.)
 
-    
+
 
 
 
     //Aquí para dañar
-    
+    [HideInInspector]
+    public Atacar attackController;
+
 
 
     public void OnTriggerEnter(Collider other)

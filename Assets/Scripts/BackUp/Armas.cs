@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Armas : MonoBehaviour
 {
-    [SerializeField] public Collider Collider;
+    public int danio = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +20,11 @@ public class Armas : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        Vida health = other.GetComponent<Vida>();
+
+        if (health != null)
         {
-            VidaNpc health = other.GetComponent<VidaNpc>();
-            if (health != null)
-            {
-                health.TakeDamage(20);
-            }
+            health.TakeDamage(danio);
         }
     }
 

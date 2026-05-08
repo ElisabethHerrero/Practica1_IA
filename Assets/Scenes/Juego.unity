@@ -8775,6 +8775,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  attackController: {fileID: 0}
 --- !u!136 &186493984
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8798,7 +8799,13 @@ CapsuleCollider:
   m_Height: 1.94
   m_Direction: 1
   m_Center: {x: 0, y: 0.44, z: 0}
---- !u!114 &186493986
+--- !u!4 &186493987 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0ac14085904ae3428654e1954ed6b37,
+    type: 3}
+  m_PrefabInstance: {fileID: 1368278647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &186493988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8807,10 +8814,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 186493979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 554d6112f1d924a4d8d94c784eb3035b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e4c114804424dc478c351c83431acc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &186493989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186493979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9146aa2f21afe8044b4c4c1ca1d0945e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCollider: {fileID: 0}
 --- !u!4 &186809568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6024645757833968605, guid: 8ed289e27f4539445b76827aa39e73fc,
@@ -29203,6 +29223,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  attackController: {fileID: 0}
 --- !u!195 &580645677
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -41367,6 +41388,76 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &806252315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 806252316}
+  - component: {fileID: 806252318}
+  - component: {fileID: 806252317}
+  m_Layer: 3
+  m_Name: Atacar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &806252316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806252315}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1443935507}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &806252317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806252315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312829abf457b964aad060755e847ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  owner: {fileID: 1443935500}
+--- !u!136 &806252318
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806252315}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.98
+  m_Height: 2.19
+  m_Direction: 1
+  m_Center: {x: -1.05, y: 0, z: 0}
 --- !u!4 &806439100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 668735768885291391, guid: 91ad7bf144749b04ab484a680630a040,
@@ -71857,6 +71948,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1463882733}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 929a2b3493fbc0e4faa81907174e1b23,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1463882734}
   m_SourcePrefab: {fileID: 100100000, guid: 929a2b3493fbc0e4faa81907174e1b23, type: 3}
 --- !u!1001 &1350397165
 PrefabInstance:
@@ -72997,7 +73092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0ac14085904ae3428654e1954ed6b37,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2099810622}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e0ac14085904ae3428654e1954ed6b37,
         type: 3}
@@ -73014,7 +73113,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e0ac14085904ae3428654e1954ed6b37,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 186493986}
+      addedObject: {fileID: 186493989}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e0ac14085904ae3428654e1954ed6b37,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 186493988}
   m_SourcePrefab: {fileID: 100100000, guid: e0ac14085904ae3428654e1954ed6b37, type: 3}
 --- !u!4 &1368563688 stripped
 Transform:
@@ -75864,11 +75967,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1443935507}
   - component: {fileID: 1443935502}
-  - component: {fileID: 1443935510}
-  - component: {fileID: 1443935509}
   - component: {fileID: 1443935508}
   - component: {fileID: 1443935512}
   - component: {fileID: 1443935511}
+  - component: {fileID: 1443935514}
+  - component: {fileID: 1443935513}
   m_Layer: 3
   m_Name: Player3P
   m_TagString: Player
@@ -75919,6 +76022,7 @@ Transform:
   - {fileID: 1805564182}
   - {fileID: 1014502757}
   - {fileID: 1090921684}
+  - {fileID: 806252316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1443935508
@@ -75941,39 +76045,6 @@ MonoBehaviour:
   animator: {fileID: 1382344840}
   navMeshOffsetY: 0.5
   navMeshSearchRadius: 2
---- !u!114 &1443935509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443935500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 239bdf4094307c9439d07d1f5cc05007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidaMax: 100
---- !u!114 &1443935510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443935500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6040001b6ba10ab49a080401655c3b00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  attackPoint: {fileID: 1090921684}
-  attackRange: 1.5
-  damage: 25
-  npcLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  attackCooldown: 0.8
 --- !u!136 &1443935511
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -76020,10 +76091,36 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1443935513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443935500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9146aa2f21afe8044b4c4c1ca1d0945e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCollider: {fileID: 806252318}
+--- !u!114 &1443935514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443935500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4c114804424dc478c351c83431acc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &1444908380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76656,6 +76753,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  attackController: {fileID: 0}
 --- !u!4 &1463882732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 929a2b3493fbc0e4faa81907174e1b23,
@@ -76685,6 +76783,19 @@ CapsuleCollider:
   m_Height: 1.66
   m_Direction: 1
   m_Center: {x: 0, y: 0.52, z: 0}
+--- !u!114 &1463882734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463882728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9146aa2f21afe8044b4c4c1ca1d0945e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCollider: {fileID: 1603841197}
 --- !u!1001 &1464958694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84449,6 +84560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1603841196}
   - component: {fileID: 1603841197}
+  - component: {fileID: 1603841198}
   m_Layer: 0
   m_Name: Atacar
   m_TagString: Untagged
@@ -84494,6 +84606,20 @@ CapsuleCollider:
   m_Height: 1.67
   m_Direction: 1
   m_Center: {x: 0, y: 0.42, z: 0.36}
+--- !u!114 &1603841198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603841195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312829abf457b964aad060755e847ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  owner: {fileID: 1463882728}
 --- !u!4 &1605438219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8378305016021551963, guid: e7a79a14190d3d34f93236ba7164d734,
@@ -110490,6 +110616,76 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2099340924}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2099810621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099810622}
+  - component: {fileID: 2099810624}
+  - component: {fileID: 2099810623}
+  m_Layer: 0
+  m_Name: Atacar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2099810622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099810621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 186493987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2099810623
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099810621}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.79
+  m_Height: 1.63
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.61, z: 0.39}
+--- !u!114 &2099810624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099810621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312829abf457b964aad060755e847ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  owner: {fileID: 186493979}
 --- !u!1001 &2099908606
 PrefabInstance:
   m_ObjectHideFlags: 0

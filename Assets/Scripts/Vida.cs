@@ -39,6 +39,7 @@ public class Vida : MonoBehaviour
         if (npc != null)
         {
             npc.ChangeState(new MorirState(npc));
+            Debug.Log(gameObject.name + " murió");
         }
         else
         {
