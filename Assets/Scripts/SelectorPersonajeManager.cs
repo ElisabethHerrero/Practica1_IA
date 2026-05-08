@@ -1,20 +1,20 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SeleccionarPersonaje : MonoBehaviour
+public class CharacterSelect : MonoBehaviour
 {
     [Header("UI")]
     public Image imagenPersonaje;
+
+    [Header("Personajes")]
     public Sprite[] personajes;
 
-    [Header("OST por personaje")]
+    [Header("Musica por personaje")]
     public AudioClip[] musicaPersonajes;
 
-    [Header("Configuración de audio")]
-    [Range(0f, 1f)] public float volumen = 0.8f;
-    public float tiempoFade = 0.1f;
+    [Header("Audio")]
+    public float volumen = 0.8f;
 
     private int indiceActual = 0;
     private AudioSource audioSource;
@@ -27,18 +27,33 @@ public class SeleccionarPersonaje : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
 
         audioSource.loop = true;
-        audioSource.spatialBlend = 0f;
         audioSource.volume = volumen;
 
         ActualizarPersonaje();
     }
 
+    public void Siguiente()
+    {
+        indiceActual = (indiceActual + 1) % personajes.Length;
+        ActualizarPersonaje();
+    }
+
+    public void Anterior()
+    {
+        indiceActual = (indiceActual - 1 + personajes.Length) % personajes.Length;
+        ActualizarPersonaje();
+    }
+
+
+
     void ActualizarPersonaje()
     {
-        if (personajes.Length == 0) return;
+        if (personajes == null || personajes.Length == 0) return;
+        if (imagenPersonaje == null) return;
 
         imagenPersonaje.sprite = personajes[indiceActual];
 
+        // Música por personaje
         if (musicaPersonajes != null && indiceActual < musicaPersonajes.Length)
         {
             AudioClip nuevaMusica = musicaPersonajes[indiceActual];
@@ -48,48 +63,45 @@ public class SeleccionarPersonaje : MonoBehaviour
                 if (fadeCoroutine != null)
                     StopCoroutine(fadeCoroutine);
 
-                fadeCoroutine = StartCoroutine(FadeHacia(nuevaMusica));
+                fadeCoroutine = StartCoroutine(CambiarMusica(nuevaMusica));
             }
         }
     }
 
-    private IEnumerator FadeHacia(AudioClip nuevoClip)
+    System.Collections.IEnumerator CambiarMusica(AudioClip clip)
     {
         float t = 0f;
-        float volInicial = audioSource.volume;
+        float startVolume = audioSource.volume;
 
-        while (t < tiempoFade)
+        // Fade out
+        while (t < 0.3f)
         {
             t += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(volInicial, 0f, t / tiempoFade);
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, t / 0.3f);
             yield return null;
         }
 
-        audioSource.clip = nuevoClip;
+        audioSource.clip = clip;
         audioSource.Play();
 
         t = 0f;
-        while (t < tiempoFade)
+
+        // Fade in
+        while (t < 0.3f)
         {
             t += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(0f, volumen, t / tiempoFade);
+            audioSource.volume = Mathf.Lerp(0f, volumen, t / 0.3f);
             yield return null;
         }
 
         audioSource.volume = volumen;
     }
-
-
-    public void ElegirPersonaje()
+    public void Aceptar()
     {
         GameManager.Instance.selectedCharacter = indiceActual;
         GameManager.Instance.selectedMusic = musicaPersonajes[indiceActual];
 
-        SceneManager.LoadScene("Juego");
+        SceneManager.LoadScene("MainMenu");
     }
 
-    public void Salir()
-    {
-        Application.Quit();
-    }
 }
