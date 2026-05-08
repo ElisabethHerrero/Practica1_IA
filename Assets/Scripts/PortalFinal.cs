@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PortalFinal : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class PortalFinal : MonoBehaviour
     public GameObject[] lucesPortal;
 
     private bool playerDentro = false;
+    private bool portalActivado = false;
 
     void Start()
     {
@@ -19,6 +22,8 @@ public class PortalFinal : MonoBehaviour
 
     void Update()
     {
+        if (portalActivado) return;
+
         if (playerDentro && Input.GetKeyDown(KeyCode.R))
         {
             if (coinManager != null && coinManager.coins >= monedasNecesarias)
@@ -34,12 +39,23 @@ public class PortalFinal : MonoBehaviour
 
     private void ActivarPortal()
     {
+        portalActivado = true;
+
         foreach (GameObject luz in lucesPortal)
         {
             luz.SetActive(true);
         }
 
         Debug.Log("Portal final activado.");
+
+        StartCoroutine(CambiarEscenaFinal());
+    }
+
+    private IEnumerator CambiarEscenaFinal()
+    {
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene(5);
     }
 
     private void OnTriggerEnter(Collider other)

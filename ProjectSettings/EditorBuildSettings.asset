@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Instrucciones.unity
     guid: f2f1bb068d54f57448da8a682f7c2300
+  - enabled: 1
+    path: Assets/Scenes/Enhorabuena.unity
+    guid: aab5cb86b8f992d4c9ffa745d95f2a4e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
