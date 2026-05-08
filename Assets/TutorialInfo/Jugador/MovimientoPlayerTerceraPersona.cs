@@ -46,13 +46,15 @@ public class MovimientoPlayerTerceraPersona : MonoBehaviour
 
         bool isMoving = inputDirection.magnitude > 0.1f;
 
+        // Animator movimiento
         if (animator != null)
         {
             animator.SetBool("isMoving", isMoving);
         }
 
-        if (isMoving)
+        if (isMoving && cameraTransform != null)
         {
+            // Dirección respecto a cámara
             Vector3 cameraForward = cameraTransform.forward;
             Vector3 cameraRight = cameraTransform.right;
 
@@ -62,12 +64,19 @@ public class MovimientoPlayerTerceraPersona : MonoBehaviour
             cameraForward.Normalize();
             cameraRight.Normalize();
 
-            Vector3 moveDirection = cameraForward * inputDirection.z + cameraRight * inputDirection.x;
+            Vector3 moveDirection =
+                cameraForward * inputDirection.z +
+                cameraRight * inputDirection.x;
+
             moveDirection.Normalize();
 
+            // Movimiento
             controller.Move(moveDirection * speed * Time.deltaTime);
 
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            // Rotación del modelo visual
+            Quaternion targetRotation =
+                Quaternion.LookRotation(moveDirection) *
+                Quaternion.Euler(0, 90f, 0);
 
             if (modelTransform != null)
             {
@@ -77,25 +86,33 @@ public class MovimientoPlayerTerceraPersona : MonoBehaviour
                     rotationSpeed * Time.deltaTime
                 );
             }
-            else
-            {
-                transform.rotation = Quaternion.Slerp(
-                    transform.rotation,
-                    targetRotation,
-                    rotationSpeed * Time.deltaTime
-                );
-            }
+        }
+
+        AplicarGravedad();
+    }
+
+    void AplicarGravedad()
+    {
+        if (controller.isGrounded && verticalVelocity.y < 0f)
+        {
+            verticalVelocity.y = -2f;
         }
 
         verticalVelocity.y += gravity * Time.deltaTime;
+
         controller.Move(verticalVelocity * Time.deltaTime);
     }
 
     void AjustarAlturaAlNavMesh()
     {
-        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, navMeshSearchRadius, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(
+            transform.position,
+            out NavMeshHit hit,
+            navMeshSearchRadius,
+            NavMesh.AllAreas))
         {
             Vector3 targetPosition = transform.position;
+
             targetPosition.y = hit.position.y + navMeshOffsetY;
 
             transform.position = Vector3.Lerp(

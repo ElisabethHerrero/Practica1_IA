@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SeleccionarPersonaje : MonoBehaviour
 {
-    public Image imagenPersonaje;   
-    public Sprite[] personajes;     
+    public UnityEngine.UI.Image imagenPersonaje;
+    public Sprite[] personajes;
 
     private int indiceActual = 0;
 
@@ -20,6 +19,7 @@ public class SeleccionarPersonaje : MonoBehaviour
     public void Siguiente()
     {
         indiceActual++;
+
         if (indiceActual >= personajes.Length)
             indiceActual = 0;
 
@@ -29,6 +29,7 @@ public class SeleccionarPersonaje : MonoBehaviour
     public void Anterior()
     {
         indiceActual--;
+
         if (indiceActual < 0)
             indiceActual = personajes.Length - 1;
 
@@ -40,20 +41,9 @@ public class SeleccionarPersonaje : MonoBehaviour
         imagenPersonaje.sprite = personajes[indiceActual];
     }
 
-
-    //De paso ponemos aqui el resto de botones
-
     public void Jugar()
     {
-
         SceneManager.LoadScene(2);
-        
-
-    }
-
-    public void Salir()
-    {
-        
     }
 
     public void ElegirPersonaje()
@@ -61,6 +51,8 @@ public class SeleccionarPersonaje : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-
-
+    public void Salir()
+    {
+        Application.Quit();
+    }
 }

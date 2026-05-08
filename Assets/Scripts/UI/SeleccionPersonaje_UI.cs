@@ -49,6 +49,11 @@ public class SeleccionPersonajeUI : MonoBehaviour
 
     void ActualizarImagen()
     {
-        imagenPersonaje.sprite = spritesPersonajes[indiceActual];
+        if (imagenPersonaje != null &&
+            spritesPersonajes != null &&
+            spritesPersonajes.Length > 0)
+        {
+            imagenPersonaje.sprite = spritesPersonajes[indiceActual];
+        }
     }
 }
