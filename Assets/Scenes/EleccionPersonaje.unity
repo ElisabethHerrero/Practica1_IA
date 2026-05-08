@@ -339,8 +339,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886767789}
-        m_TargetAssemblyTypeName: SeleccionPersonajeUI, Assembly-CSharp
+      - m_Target: {fileID: 1886767791}
+        m_TargetAssemblyTypeName: SeleccionarPersonaje, Assembly-CSharp
         m_MethodName: Anterior
         m_Mode: 1
         m_Arguments:
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886767789}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SeleccionPersonajeUI, Assembly-CSharp
         m_MethodName: Aceptar
         m_Mode: 1
@@ -1157,7 +1157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1886767790}
-  - component: {fileID: 1886767789}
+  - component: {fileID: 1886767791}
   m_Layer: 0
   m_Name: SelectorPersonajeManager
   m_TagString: Untagged
@@ -1165,23 +1165,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1886767789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886767788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e92f05c5d2d8b6343a09423a1c4ca94c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imagenPersonaje: {fileID: 552385105}
-  spritesPersonajes:
-  - {fileID: 21300000, guid: 06dd009ac42153b4da33a9be1219cbd1, type: 3}
-  - {fileID: 21300000, guid: 23739441a89f7f741bb34823f4e84830, type: 3}
-  - {fileID: 21300000, guid: ee0f6085171643e45bf860cc0593cc9f, type: 3}
 --- !u!4 &1886767790
 Transform:
   m_ObjectHideFlags: 0
@@ -1197,6 +1180,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1886767791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886767788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92f05c5d2d8b6343a09423a1c4ca94c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imagenPersonaje: {fileID: 552385105}
+  personajes:
+  - {fileID: 21300000, guid: 06dd009ac42153b4da33a9be1219cbd1, type: 3}
+  - {fileID: 21300000, guid: ee0f6085171643e45bf860cc0593cc9f, type: 3}
+  - {fileID: 21300000, guid: 23739441a89f7f741bb34823f4e84830, type: 3}
+  musicaPersonajes:
+  - {fileID: 8300000, guid: d2dd1db0fb3f8d744ac17f4242338776, type: 3}
+  - {fileID: 8300000, guid: 795931a35534adb47a9766e2a85ba7eb, type: 3}
+  - {fileID: 8300000, guid: 2d4127e068642e7418fed249edfd4bd4, type: 3}
+  volumen: 0.8
+  tiempoFade: 1.5
 --- !u!1 &1890064149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,8 +1423,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886767789}
-        m_TargetAssemblyTypeName: SeleccionPersonajeUI, Assembly-CSharp
+      - m_Target: {fileID: 1886767791}
+        m_TargetAssemblyTypeName: SeleccionarPersonaje, Assembly-CSharp
         m_MethodName: Siguiente
         m_Mode: 1
         m_Arguments:

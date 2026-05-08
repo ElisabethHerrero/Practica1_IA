@@ -1,59 +1,106 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SeleccionPersonajeUI : MonoBehaviour
+public class SeleccionarPersonaje : MonoBehaviour
 {
-    public Image imagenPersonaje;
-    public Sprite[] spritesPersonajes;
+    [Header("UI")]
+    public UnityEngine.UI.Image imagenPersonaje;
+    public Sprite[] personajes;
+
+    [Header("OST por personaje")]
+    public AudioClip[] musicaPersonajes; // mismo orden que el array de sprites
+
+    [Header("Configuración de audio")]
+    [Range(0f, 1f)] public float volumen = 0.8f;
+    public float tiempoFade = 0.1f;
 
     private int indiceActual = 0;
+    private AudioSource audioSource;
+    private Coroutine fadeCoroutine;
 
     void Start()
     {
-        indiceActual = PlayerPrefs.GetInt("PersonajeSeleccionado", 0);
-        ActualizarImagen();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = true;
+        audioSource.spatialBlend = 0f;
+        audioSource.volume = volumen;
+
+        ActualizarPersonaje();
     }
 
     public void Siguiente()
     {
-        indiceActual++;
-
-        if (indiceActual >= spritesPersonajes.Length)
-        {
-            indiceActual = 0;
-        }
-
-        ActualizarImagen();
+        indiceActual = (indiceActual + 1) % personajes.Length;
+        ActualizarPersonaje();
     }
 
     public void Anterior()
     {
-        indiceActual--;
-
-        if (indiceActual < 0)
-        {
-            indiceActual = spritesPersonajes.Length - 1;
-        }
-
-        ActualizarImagen();
+        indiceActual = (indiceActual - 1 + personajes.Length) % personajes.Length;
+        ActualizarPersonaje();
     }
 
-    public void Aceptar()
+    void ActualizarPersonaje()
     {
-        PlayerPrefs.SetInt("PersonajeSeleccionado", indiceActual);
-        PlayerPrefs.Save();
+        // Actualizar imagen
+        imagenPersonaje.sprite = personajes[indiceActual];
 
-        SceneManager.LoadScene("MainMenu");
+        // Cambiar música con fade
+        if (musicaPersonajes != null && indiceActual < musicaPersonajes.Length)
+        {
+            AudioClip nuevaMusica = musicaPersonajes[indiceActual];
+            if (nuevaMusica != null && audioSource.clip != nuevaMusica)
+            {
+                if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+                fadeCoroutine = StartCoroutine(FadeHacia(nuevaMusica));
+            }
+        }
     }
 
-    void ActualizarImagen()
+    private IEnumerator FadeHacia(AudioClip nuevoClip)
     {
-        if (imagenPersonaje != null &&
-            spritesPersonajes != null &&
-            spritesPersonajes.Length > 0)
+        // Fade out
+        float t = 0f;
+        float volInicial = audioSource.volume;
+        while (t < tiempoFade)
         {
-            imagenPersonaje.sprite = spritesPersonajes[indiceActual];
+            t += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(volInicial, 0f, t / tiempoFade);
+            yield return null;
         }
+
+        // Cambiar pista
+        audioSource.clip = nuevoClip;
+        audioSource.Play();
+
+        // Fade in
+        t = 0f;
+        while (t < tiempoFade)
+        {
+            t += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(0f, volumen, t / tiempoFade);
+            yield return null;
+        }
+
+        audioSource.volume = volumen;
+    }
+
+    public void Jugar()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void ElegirPersonaje()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void Salir()
+    {
+        Application.Quit();
     }
 }
