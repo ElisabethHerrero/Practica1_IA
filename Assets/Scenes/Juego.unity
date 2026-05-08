@@ -618,7 +618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 90, y: -17}
+  m_AnchoredPosition: {x: 41, y: -17}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &4407335
@@ -641,7 +641,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Monedas: 0'
+  m_text: "Energ\xEDia magica: 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0317dec597024de4cae125deccbe0c8e, type: 2}
   m_sharedMaterial: {fileID: -8425272092576991918, guid: 0317dec597024de4cae125deccbe0c8e,

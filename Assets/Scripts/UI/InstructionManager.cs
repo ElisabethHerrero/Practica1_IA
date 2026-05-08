@@ -16,7 +16,7 @@ public class InstructionManager : MonoBehaviour
     [TextArea(3, 6)]
     public string[] instructions =
     {
-        "¡Bienvenido, joven estudiante!",
+        "¡Buenas noches y bienvenido, joven estudiante!",
 
         "¿Estas listo para tu examen final de Defensa para Magos I?",
 

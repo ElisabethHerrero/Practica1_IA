@@ -21,6 +21,6 @@ public class CoinManager : MonoBehaviour
 
     void UpdateCoinText()
     {
-        coinText.text = "Monedas: " + coins;
+        coinText.text = "Energia magica: " + coins;
     }
 }
