@@ -7,7 +7,7 @@ public class ButtonManager : MonoBehaviour
 
     public void Jugar()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
 
     public void ElegirPersonaje()
