@@ -16,16 +16,10 @@ public class ChaseState : State
 
     public override void Update()
     {
-        /*
-        if (npc.player == null)
-        {
-            npc.ChangeState(new PatrolState(npc));
-            return;
-        }
-        */
+        
 
         //que se pare sin legar a atravesar al juador
-        npc.agent.stoppingDistance = 1f;
+        npc.agent.stoppingDistance = 2.12f;
 
         npc.agent.destination = npc.player.position;
 
@@ -43,7 +37,9 @@ public class ChaseState : State
         if (distance <= 1f)
         {
             npc.ChangeState(new AttackState(npc));
-        }        
+        }   
+        
+      
     }
 
     public override void Exit() { }

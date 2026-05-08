@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatrolState : State
 {
-    //aui patrula 
+    //aqui patrulla 
     public PatrolState(NPCController npc) : base(npc) { }
 
 

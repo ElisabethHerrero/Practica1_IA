@@ -70,18 +70,6 @@ public class NPCController : MonoBehaviour
     public Atacar attackController;
 
 
-
-    public void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        
-        
-    }
-
     public bool CheckVision()
     {
         if (player == null) return false;
