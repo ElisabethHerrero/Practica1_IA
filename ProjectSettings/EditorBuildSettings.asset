@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Juego.unity
     guid: 158dd9f0faf448d4a860ce8c65072a3e
+  - enabled: 1
+    path: Assets/Scenes/EleccionPersonaje.unity
+    guid: d15d7d6452eafdb4fabac4867b975b11
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

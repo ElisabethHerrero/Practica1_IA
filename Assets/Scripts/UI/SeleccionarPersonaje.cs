@@ -56,6 +56,10 @@ public class SeleccionarPersonaje : MonoBehaviour
         
     }
 
+    public void ElegirPersonaje()
+    {
+        SceneManager.LoadScene(3);
+    }
 
 
 
