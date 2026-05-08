@@ -7,6 +7,12 @@ public class Vida : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
 
+    //Propiedad pública para poder consultar la vida actual desde otros scripts (UI, etc.)
+    public int CurrentHealth
+    {
+        get { return currentHealth; }
+    }
+
     private NPCController npc;
 
 
@@ -48,6 +54,4 @@ public class Vida : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
 }
