@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef45e9c3c88547344a43033682ac365a, type: 3}
   m_Name: SlimeData
   m_EditorClassIdentifier: 
-  vida: 0
-  speed: 0
-  danio: 0
+  vida: 60
+  speed: 2
+  danio: 10

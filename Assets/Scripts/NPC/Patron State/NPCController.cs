@@ -22,6 +22,11 @@ public class NPCController : MonoBehaviour
 
     public int vida;
 
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();

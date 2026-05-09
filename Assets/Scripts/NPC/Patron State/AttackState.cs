@@ -6,7 +6,7 @@ public class AttackState : State
 {
     public AttackState(NPCController npc) : base(npc) { }
 
-    private float cooldown = 1.5f;
+    private float cooldown = 1.2f;
     private float lastAttack;
 
     public override void Enter()
