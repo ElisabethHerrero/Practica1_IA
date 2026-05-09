@@ -20,7 +20,7 @@ public class NPCController : MonoBehaviour
 
     //
 
-    public int vida = 100;
+    public int vida;
 
     void Start()
     {
@@ -54,16 +54,30 @@ public class NPCController : MonoBehaviour
     {
         vida = data.vida;
 
-        detectionRange = data.detectionRange;
-        loseRange = data.loseRange;
-
-        viewAngle = data.viewAngle;
-        viewDistance = data.viewDistance;
+        
 
         patrolPoints = patrols;
 
         agent = GetComponent<NavMeshAgent>();
         agent.speed = data.speed;
+
+        // VIDA
+        Vida vidaComponent = GetComponent<Vida>();
+
+        if (vidaComponent != null)
+        {
+            vidaComponent.Initialize(data.vida);
+        }
+
+        // DAÑO
+        Armas weapon = GetComponentInChildren<Armas>();
+
+        if (weapon != null)
+        {
+            weapon.Initialize(data.danio);
+        }
+
+
     }
 
 

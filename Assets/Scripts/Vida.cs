@@ -54,4 +54,11 @@ public class Vida : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //para los NPCs
+    public void Initialize(int health)
+    {
+        maxHealth = health;
+        currentHealth = health;
+    }
 }

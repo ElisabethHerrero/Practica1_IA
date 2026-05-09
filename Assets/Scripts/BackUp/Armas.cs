@@ -28,4 +28,12 @@ public class Armas : MonoBehaviour
         }
     }
 
+    //para los NPCs
+
+    public void Initialize(int damage)
+    {
+        danio = damage;
+    }
+
+
 }
