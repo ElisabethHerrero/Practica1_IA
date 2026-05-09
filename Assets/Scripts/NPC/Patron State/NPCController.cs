@@ -26,6 +26,7 @@ public class NPCController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         ChangeState(new PatrolState(this));
+        attackController = GetComponent<Atacar>();
     }
 
     void Update()
@@ -47,8 +48,28 @@ public class NPCController : MonoBehaviour
         return Vector3.Distance(transform.position, player.position);
     }
 
+    //para la fábrica de NPCs
+
+    public void Initialize(NPCData data, Transform[] patrols)
+    {
+        vida = data.vida;
+
+        detectionRange = data.detectionRange;
+        loseRange = data.loseRange;
+
+        viewAngle = data.viewAngle;
+        viewDistance = data.viewDistance;
+
+        patrolPoints = patrols;
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = data.speed;
+    }
 
 
+    //hasta aquí
+
+    
 
 
 
