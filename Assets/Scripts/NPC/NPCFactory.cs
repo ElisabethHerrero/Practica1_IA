@@ -5,12 +5,12 @@ using UnityEngine;
 public class NPCFactory : MonoBehaviour
 {
     [Header("Prefabs")]
-    public GameObject guardPrefab;
-    public GameObject zombiePrefab;
+    public GameObject SlimePrefab;
+    public GameObject GoshtPrefab;
 
     [Header("Data")]
-    public NPCData guardData;
-    public NPCData zombieData;
+    public NPCData SlimeData;
+    public NPCData GhostData;
 
     public NPCController CreateNPC(
         NPCType type,
@@ -22,14 +22,14 @@ public class NPCFactory : MonoBehaviour
 
         switch (type)
         {
-            case NPCType.Guard:
-                prefab = guardPrefab;
-                data = guardData;
+            case NPCType.Slime:
+                prefab = SlimePrefab;
+                data = SlimeData;
                 break;
 
-            case NPCType.Zombie:
-                prefab = zombiePrefab;
-                data = zombieData;
+            case NPCType.Fantasma:
+                prefab = GoshtPrefab;
+                data = GhostData;
                 break;
         }
 
