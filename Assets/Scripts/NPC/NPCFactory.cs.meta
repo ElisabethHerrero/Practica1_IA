@@ -8,8 +8,8 @@ MonoImporter:
       type: 3}
   - GoshtPrefab: {fileID: 9215201560916382866, guid: b751bbc6556a14f43894e11c7714fde1,
       type: 3}
-  - SlimeData: {instanceID: 0}
-  - GhostData: {instanceID: 0}
+  - SlimeData: {fileID: 11400000, guid: cc012963f757a4b41b1bda1927a78765, type: 2}
+  - GhostData: {fileID: 11400000, guid: a6c1b6f4589723741b49dd6062fdb6e6, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
