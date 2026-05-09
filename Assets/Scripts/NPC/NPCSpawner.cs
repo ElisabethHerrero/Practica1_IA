@@ -9,10 +9,10 @@ public class NPCSpawner : MonoBehaviour
     public NPCFactory factory;
 
     [Header("NPC Settings")]
-    public NPCType npcTypeToSpawn;
+    public NPCType[] npcTypes;
 
     [Header("Spawn Control")]
-    public int maxEnemies = 10;
+    public int maxEnemies = 8;
     public float checkInterval = 2f;
 
     [Header("Spawn Distance")]
@@ -61,9 +61,11 @@ public class NPCSpawner : MonoBehaviour
             Transform[] patrols =
                 GetRandomPatrols(allPatrolPoints, patrolPointsPerNPC);
 
+            NPCType randomType = npcTypes[Random.Range(0, npcTypes.Length)]; //para que sea aleatorio
+
             // Crear NPC
             factory.CreateNPC(
-                npcTypeToSpawn,
+                randomType,
                 spawnPosition,
                 patrols);
         }
