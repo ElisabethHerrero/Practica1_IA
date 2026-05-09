@@ -4,6 +4,6 @@ using UnityEngine;
 
 public enum NPCType
 {
-    Guard,
-    Zombie
+    Slime,
+    Fantasma
 }
