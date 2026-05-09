@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class NPCFactory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Prefabs")]
+    public GameObject guardPrefab;
+    public GameObject zombiePrefab;
 
-    // Update is called once per frame
-    void Update()
+    [Header("Data")]
+    public NPCData guardData;
+    public NPCData zombieData;
+
+    public NPCController CreateNPC(
+        NPCType type,
+        Vector3 position,
+        Transform[] patrolPoints)
     {
-        
+        GameObject prefab = null;
+        NPCData data = null;
+
+        switch (type)
+        {
+            case NPCType.Guard:
+                prefab = guardPrefab;
+                data = guardData;
+                break;
+
+            case NPCType.Zombie:
+                prefab = zombiePrefab;
+                data = zombieData;
+                break;
+        }
+
+        GameObject npcObj = Instantiate(prefab, position, Quaternion.identity);
+
+        NPCController npc = npcObj.GetComponent<NPCController>();
+
+        npc.Initialize(data, patrolPoints);
+
+        return npc;
     }
 }
