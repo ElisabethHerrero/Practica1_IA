@@ -104958,8 +104958,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1968359102}
-  npcTypes: 
-  maxEnemies: 10
+  npcTypes: 0000000001000000
+  maxEnemies: 6
   checkInterval: 2
   minDistanceFromPlayer: 20
   maxDistanceFromPlayer: 40
