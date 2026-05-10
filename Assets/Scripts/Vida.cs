@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Vida : MonoBehaviour
 {
@@ -52,6 +53,8 @@ public class Vida : MonoBehaviour
             // Player o cualquier otra cosa
             Debug.Log(gameObject.name + " murió");
             Destroy(gameObject);
+            SceneManager.LoadScene(6);
+
         }
     }
 
