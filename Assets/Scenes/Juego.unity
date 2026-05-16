@@ -53088,6 +53088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  barraVida: {fileID: 0}
 --- !u!1001 &998878203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76740,6 +76741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  barraVida: {fileID: 0}
 --- !u!114 &1443935515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113960,7 +113962,8 @@ PrefabInstance:
       value: Slime
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4902856241964135079, guid: ebd7a985b6f9cdd4797c190928cf7668, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebd7a985b6f9cdd4797c190928cf7668, type: 3}

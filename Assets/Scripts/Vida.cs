@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Vida : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
 
-    //Propiedad p˙blica para poder consultar la vida actual desde otros scripts (UI, etc.)
+    public Image barraVida; // Arrastra aqu√≠ la barra del Canvas
+
     public int CurrentHealth
     {
         get { return currentHealth; }
@@ -16,14 +18,13 @@ public class Vida : MonoBehaviour
 
     private NPCController npc;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
 
-        // Solo existir· en NPCs
-        npc = GetComponent<NPCController>(); //solo si es el NPC
+        npc = GetComponent<NPCController>();
+
+        ActualizarBarra();
     }
 
     public void TakeDamage(int amount)
@@ -32,7 +33,9 @@ public class Vida : MonoBehaviour
 
         currentHealth -= amount;
 
-        Debug.Log(gameObject.name + " recibiÛ daÒo");
+        Debug.Log(gameObject.name + " recibi√≥ da√±o");
+
+        ActualizarBarra(); // ‚Üê actualizar visualmente
 
         if (currentHealth <= 0)
         {
@@ -40,28 +43,33 @@ public class Vida : MonoBehaviour
         }
     }
 
-    void Die()
+    void ActualizarBarra()
     {
-        // Si es NPC
-        if (npc != null)
+        if (barraVida != null)
         {
-            npc.ChangeState(new MorirState(npc));
-            Debug.Log(gameObject.name + " muriÛ");
-        }
-        else
-        {
-            // Player o cualquier otra cosa
-            Debug.Log(gameObject.name + " muriÛ");
-            Destroy(gameObject);
-            SceneManager.LoadScene(6);
-
+            barraVida.fillAmount =
+                (float)currentHealth / maxHealth;
         }
     }
 
-    //para los NPCs
+    void Die()
+    {
+        if (npc != null)
+        {
+            npc.ChangeState(new MorirState(npc));
+        }
+        else
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene(6);
+        }
+    }
+
     public void Initialize(int health)
     {
         maxHealth = health;
         currentHealth = health;
+
+        ActualizarBarra();
     }
 }

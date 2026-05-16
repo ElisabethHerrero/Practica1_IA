@@ -13,7 +13,7 @@ public class VidaNpc : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        Debug.Log("Recibe daño");
+        Debug.Log("Recibe daï¿½o");
         npc = GetComponent<NPCController>();
     }
 
