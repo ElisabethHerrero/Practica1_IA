@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 929a2b3493fbc0e4faa81907174e1b23,
         type: 3}
       propertyPath: m_Name
-      value: Ghost
+      value: Ghost_Mejorado
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -159,6 +159,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 770954453697677746}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 929a2b3493fbc0e4faa81907174e1b23,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5831522147267686426}
   m_SourcePrefab: {fileID: 100100000, guid: 929a2b3493fbc0e4faa81907174e1b23, type: 3}
 --- !u!4 &8406294513437085224 stripped
 Transform:
@@ -262,3 +266,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 9153747453036646552}
+--- !u!114 &5831522147267686426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9215201560916382866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4c114804424dc478c351c83431acc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100

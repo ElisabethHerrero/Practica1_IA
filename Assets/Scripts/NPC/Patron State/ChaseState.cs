@@ -21,7 +21,7 @@ public class ChaseState : State
         //que se pare sin legar a atravesar al juador
         npc.agent.stoppingDistance = 2.12f;
 
-        npc.agent.destination = npc.player.position;
+        npc.agent.destination = npc.player.transform.position;
 
         // Si pierde al jugador lo buscar
         if (npc.DistanceToPlayer() > npc.loseRange)
@@ -32,7 +32,7 @@ public class ChaseState : State
 
         //Comprobamos que está a la distancia que queremos
 
-        float distance = Vector3.Distance(npc.transform.position, npc.player.position);
+        float distance = Vector3.Distance(npc.transform.position, npc.player.transform.position);
 
         if (distance <= 1f)
         {

@@ -46,7 +46,7 @@ public class NPCSpawner : MonoBehaviour
     void CheckAndSpawn()
     {
         // Cuenta enemigos actuales
-        NPCController[] enemies = FindObjectsOfType<NPCController>();
+        NPCController[] enemies = FindObjectsByType<NPCController>(FindObjectsSortMode.None);
 
         // Si ya hay suficientes, no spawnea
         if (enemies.Length >= maxEnemies)

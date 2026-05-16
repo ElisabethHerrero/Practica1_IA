@@ -175,8 +175,12 @@ public class NPCController : MonoBehaviour
     }
 
 
+    //
 
-
+    public void SetPlayer(Transform target)
+    {
+        player = target;
+    }
 
 
 

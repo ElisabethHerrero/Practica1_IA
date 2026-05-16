@@ -22,6 +22,8 @@ public class MorirState : State
 
         Collider collider = npc.GetComponent<Collider>(); //Obtiene el collider del NPC
 
+        rend = npc.GetComponent<Renderer>();
+
         if (collider != null)
         {
             collider.enabled = false;
