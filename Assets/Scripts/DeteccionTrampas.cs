@@ -51,7 +51,7 @@ public class TrapDetection : MonoBehaviour
 
     void AlertNearbyNPCs(Transform playerTransform) //Busca todos los NPCs de la escena y avisa solo a los que están cerca
     {
-        NPCController[] allNPCs = FindObjectsOfType<NPCController>(); //Encuentra todos los objetos de la escena que tengan NPCController
+        NPCController[] allNPCs = FindObjectsByType<NPCController>(FindObjectsSortMode.None); //Encuentra todos los objetos de la escena que tengan NPCController
 
         foreach (NPCController npc in allNPCs) //Recorremos todos los NPCs encontrados
         {

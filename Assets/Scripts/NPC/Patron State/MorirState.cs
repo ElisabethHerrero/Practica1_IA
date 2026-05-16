@@ -11,7 +11,7 @@ public class MorirState : State
 
     private Renderer rend;
     private Color originalColor;
-    private float flashSpeed = 10f;
+    //private float flashSpeed = 10f;
 
     //Función que se ejecuta al entrar en estado de muerte
     public override void Enter()

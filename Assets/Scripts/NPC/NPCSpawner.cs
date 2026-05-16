@@ -64,10 +64,12 @@ public class NPCSpawner : MonoBehaviour
             NPCType randomType = npcTypes[Random.Range(0, npcTypes.Length)]; //para que sea aleatorio
 
             // Crear NPC
-            factory.CreateNPC(
+            NPCController npc = factory.CreateNPC(
                 randomType,
                 spawnPosition,
                 patrols);
+
+            npc.SetPlayer(player);
         }
     }
 
