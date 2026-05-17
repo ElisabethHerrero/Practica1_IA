@@ -26,6 +26,12 @@ public class NPCSpawner : MonoBehaviour
     public Transform[] allPatrolPoints;
     public int patrolPointsPerNPC = 3;
 
+    [Header("Preset Routes")]
+    public PatrolRoute[] presetRoutes;
+
+    [Range(0f, 1f)]
+    public float presetRouteChance = 0.5f;
+
     [Header("NavMesh")]
     public float navMeshSearchRadius = 10f;
 
@@ -58,8 +64,21 @@ public class NPCSpawner : MonoBehaviour
         if (GetRandomNavMeshPosition(out spawnPosition))
         {
             // Patrullas aleatorias
-            Transform[] patrols =
-                GetRandomPatrols(allPatrolPoints, patrolPointsPerNPC);
+            Transform[] patrols;
+
+            bool usePresetRoute = presetRoutes.Length > 0 && Random.value < presetRouteChance;
+
+            if (usePresetRoute)
+            {
+                PatrolRoute selectedRoute = presetRoutes[Random.Range(0, presetRoutes.Length)];
+
+                patrols = selectedRoute.patrolPoints;
+            }
+            else
+            {
+                patrols = GetRandomPatrols(allPatrolPoints, patrolPointsPerNPC);
+            }
+
 
             NPCType randomType = npcTypes[Random.Range(0, npcTypes.Length)]; //para que sea aleatorio
 

@@ -105076,6 +105076,29 @@ MonoBehaviour:
   - {fileID: 1971875445}
   - {fileID: 584079756}
   patrolPointsPerNPC: 4
+  presetRoutes:
+  - routeName: Todo el mapa
+    patrolPoints:
+    - {fileID: 802291496}
+    - {fileID: 958452497}
+    - {fileID: 1971875445}
+    - {fileID: 1801688896}
+  - routeName: Zona izquierda
+    patrolPoints:
+    - {fileID: 885362622}
+    - {fileID: 802291496}
+    - {fileID: 958452497}
+  - routeName: Zona Horizontal
+    patrolPoints:
+    - {fileID: 421321151}
+    - {fileID: 632303860}
+  - routeName: Habitaciones
+    patrolPoints:
+    - {fileID: 1526361350}
+    - {fileID: 1684986904}
+    - {fileID: 584079756}
+    - {fileID: 1684986904}
+  presetRouteChance: 0.5
   navMeshSearchRadius: 10
 --- !u!4 &1969452907 stripped
 Transform:
