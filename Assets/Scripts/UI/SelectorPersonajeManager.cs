@@ -23,8 +23,11 @@ public class CharacterSelect : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
         if (audioSource == null)
+        {
             audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
         audioSource.loop = true;
         audioSource.volume = volumen;
@@ -34,26 +37,42 @@ public class CharacterSelect : MonoBehaviour
 
     public void Siguiente()
     {
+        if (personajes == null || personajes.Length == 0) return;
+
         indiceActual = (indiceActual + 1) % personajes.Length;
+
+        Debug.Log("Personaje mostrado: " + indiceActual);
+
         ActualizarPersonaje();
     }
 
     public void Anterior()
     {
+        if (personajes == null || personajes.Length == 0) return;
+
         indiceActual = (indiceActual - 1 + personajes.Length) % personajes.Length;
+
+        Debug.Log("Personaje mostrado: " + indiceActual);
+
         ActualizarPersonaje();
     }
 
-
-
     void ActualizarPersonaje()
     {
-        if (personajes == null || personajes.Length == 0) return;
-        if (imagenPersonaje == null) return;
+        if (personajes == null || personajes.Length == 0)
+        {
+            Debug.LogWarning("No hay sprites de personajes asignados.");
+            return;
+        }
+
+        if (imagenPersonaje == null)
+        {
+            Debug.LogWarning("No hay imagenPersonaje asignada.");
+            return;
+        }
 
         imagenPersonaje.sprite = personajes[indiceActual];
 
-        // Música por personaje
         if (musicaPersonajes != null && indiceActual < musicaPersonajes.Length)
         {
             AudioClip nuevaMusica = musicaPersonajes[indiceActual];
@@ -61,7 +80,9 @@ public class CharacterSelect : MonoBehaviour
             if (nuevaMusica != null && audioSource.clip != nuevaMusica)
             {
                 if (fadeCoroutine != null)
+                {
                     StopCoroutine(fadeCoroutine);
+                }
 
                 fadeCoroutine = StartCoroutine(CambiarMusica(nuevaMusica));
             }
@@ -73,7 +94,6 @@ public class CharacterSelect : MonoBehaviour
         float t = 0f;
         float startVolume = audioSource.volume;
 
-        // Fade out
         while (t < 0.3f)
         {
             t += Time.deltaTime;
@@ -86,7 +106,6 @@ public class CharacterSelect : MonoBehaviour
 
         t = 0f;
 
-        // Fade in
         while (t < 0.3f)
         {
             t += Time.deltaTime;
@@ -96,12 +115,29 @@ public class CharacterSelect : MonoBehaviour
 
         audioSource.volume = volumen;
     }
+
     public void Aceptar()
     {
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("No existe GameManager en la escena.");
+            return;
+        }
+
         GameManager.Instance.selectedCharacter = indiceActual;
-        GameManager.Instance.selectedMusic = musicaPersonajes[indiceActual];
+
+        if (musicaPersonajes != null && indiceActual < musicaPersonajes.Length)
+        {
+            GameManager.Instance.selectedMusic = musicaPersonajes[indiceActual];
+        }
+
+        // Lo guardamos también en PlayerPrefs por seguridad
+        PlayerPrefs.SetInt("PersonajeSeleccionado", indiceActual);
+        PlayerPrefs.Save();
+
+        Debug.Log("Personaje guardado en GameManager: " + indiceActual);
+        Debug.Log("Personaje guardado en PlayerPrefs: " + indiceActual);
 
         SceneManager.LoadScene("MainMenu");
     }
-
 }

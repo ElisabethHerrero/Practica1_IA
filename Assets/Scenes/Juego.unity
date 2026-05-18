@@ -76465,7 +76465,6 @@ GameObject:
   - component: {fileID: 1443935513}
   - component: {fileID: 1443935515}
   - component: {fileID: 1443935516}
-  - component: {fileID: 1443935517}
   m_Layer: 3
   m_Name: Player3P
   m_TagString: Player
@@ -76629,7 +76628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f494c39a78350b47be4aafa8f7c33ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  atacar: {fileID: 1443935513}
 --- !u!114 &1443935516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76644,26 +76643,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelosPersonaje:
   - {fileID: 846475354}
-  - {fileID: 998878205}
   - {fileID: 237823081}
+  - {fileID: 998878205}
   movimientoPlayer: {fileID: 1443935508}
   playerControles: {fileID: 1443935515}
---- !u!114 &1443935517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443935500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe9597f2f2d8bee428bce9f604120c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players:
-  - {fileID: 846475354}
-  - {fileID: 237823081}
-  - {fileID: 998878205}
 --- !u!1001 &1444908380
 PrefabInstance:
   m_ObjectHideFlags: 0

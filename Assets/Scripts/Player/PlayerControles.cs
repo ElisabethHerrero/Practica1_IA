@@ -2,27 +2,40 @@ using UnityEngine;
 
 public class PlayerControles : MonoBehaviour
 {
-    private Atacar attackController;
+    private Animator animator;
 
-    public Animator animator;
+    public Atacar atacar;
 
-    void Start()
+    public void SetAnimator(Animator nuevoAnimator)
     {
-        attackController = GetComponent<Atacar>();
+        animator = nuevoAnimator;
+        Debug.Log("PlayerControls recibió Animator: " + animator.gameObject.name);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (attackController != null)
+            Debug.Log("HE PULSADO LA E");
+
+            if (animator == null)
             {
-                attackController.Attack();
+                Debug.LogError("No hay Animator asignado en PlayerControles.");
+                return;
             }
 
-            if (animator != null)
+            Debug.Log("Ataque enviado al Animator: " + animator.gameObject.name);
+
+            animator.ResetTrigger("Attack");
+            animator.SetTrigger("Attack");
+
+            if (atacar != null)
             {
-                animator.SetTrigger("Attack");
+                atacar.Attack();
+            }
+            else
+            {
+                Debug.LogWarning("No hay script Atacar asignado en PlayerControles.");
             }
         }
     }
