@@ -20,7 +20,6 @@ public class CoinSpawner : MonoBehaviour
     public LayerMask obstacleLayer;
     public float obstacleCheckRadius = 0.8f;
 
-    // NUEVO → margen vertical para comprobar el volumen real donde estará la moneda
     public float obstacleCheckHeight = 1.5f;
 
     private void Start()
@@ -106,7 +105,6 @@ public class CoinSpawner : MonoBehaviour
         return true; //Posición válida
     }
 
-    // NUEVO → comprueba si la moneda caería dentro de un mueble/obstáculo
     bool IsInsideObstacle(Vector3 position)
     {
         Vector3 point1 = position + Vector3.up * obstacleCheckHeight;

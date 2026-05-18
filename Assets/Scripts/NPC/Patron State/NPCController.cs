@@ -17,12 +17,12 @@ public class NPCController : MonoBehaviour
     public float loseRange = 15f;
 
         [Header("Visi�n")]
-    public float viewAngle = 100f;     // �ngulo total del cono de visi�n (ej: 100�)
-    public float viewDistance = 10f;   // Distancia m�xima a la que puede ver
+    public float viewAngle = 100f; //angulo total del cono de visi�n (ej: 100�)
+    public float viewDistance = 10f; //Distancia m�xima a la que puede ver
 
     [Header("Capas")]
-    public LayerMask playerLayer;     // Capa donde est� el jugador
-    public LayerMask obstacleLayer;   // Capa de obst�culos (paredes, etc.)
+    public LayerMask playerLayer; //Capa donde est� el jugador
+    public LayerMask obstacleLayer; //Capa de obst�culos (paredes, etc.)
 
     private State currentState;
 
@@ -61,7 +61,7 @@ public class NPCController : MonoBehaviour
         return Vector3.Distance(transform.position, player.position);
     }
 
-    //para la f�brica de NPCs
+    //para la fabrica de NPCs
 
     public void Initialize(NPCData data, Transform[] patrols)
     {
