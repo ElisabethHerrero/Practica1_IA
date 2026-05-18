@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,24 +10,23 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private float distance = 2f;
     [SerializeField] private Vector2 canvasSize = new Vector2(1920, 1080);
 
-    SerializeField canva; 
-    // Start is called before the first frame update
     void Start()
     {
         canvas.SetActive(true);
         AjustaCam();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
+
     void AjustaCam()
     {
         if (targetCamera == null)
+        {
             targetCamera = Camera.main.transform;
+        }
 
         Camera cam = Camera.main;
 
@@ -43,5 +40,4 @@ public class MainMenu : MonoBehaviour
 
         t.localScale = new Vector3(width / canvasSize.x, height / canvasSize.y, 1f);
     }
-
 }
