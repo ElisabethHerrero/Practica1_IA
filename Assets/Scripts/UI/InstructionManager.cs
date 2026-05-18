@@ -16,9 +16,9 @@ public class InstructionManager : MonoBehaviour
     [TextArea(3, 6)]
     public string[] instructions =
     {
-        "¡Buenas noches y bienvenido, joven estudiante!",
+        "ï¿½Buenas noches y bienvenido, joven estudiante!",
 
-        "¿Estas listo para tu examen final de Defensa para Magos I?",
+        "ï¿½Estas listo para tu examen final de Defensa para Magos I?",
 
         "La prueba consistira en un recorrido por la mazmorra de la escuela.",
 
@@ -26,11 +26,11 @@ public class InstructionManager : MonoBehaviour
 
         "Para moverte, usa WASD. Tambien puedes rotar la camara moviendo el raton.",
 
-        "Pero recuerda... ¡Cuidado con los fantasmas!",
+        "Pero recuerda... ï¿½Cuidado con los fantasmas!",
 
         "Si te tocan, perderas vida. Para atacarlos, presiona E.",
 
-        "¡Ten cuidado tambien con las trampas!",
+        "ï¿½Ten cuidado tambien con las trampas!",
 
         "Si las pisas, los fantasmas sabran donde estas.",
 
@@ -38,7 +38,7 @@ public class InstructionManager : MonoBehaviour
 
         "Tras ello, colocate sobre el y presiona R.",
 
-        "¡Eso es todo! ¡Buena suerte!"
+        "ï¿½Eso es todo! ï¿½Buena suerte!"
     };
 
     private int currentIndex = 0;
@@ -52,7 +52,7 @@ public class InstructionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 

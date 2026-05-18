@@ -7,12 +7,17 @@ public class ButtonManager : MonoBehaviour
 
     public void Jugar()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
+    }
+
+    public void JugarDirecto()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public void ElegirPersonaje()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 
     public void Salir()
@@ -27,6 +32,6 @@ public class ButtonManager : MonoBehaviour
 
     public void VolverMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

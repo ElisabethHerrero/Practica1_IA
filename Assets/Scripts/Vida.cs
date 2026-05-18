@@ -9,7 +9,7 @@ public class Vida : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
 
-    public Image barraVida; // Arrastra aquí la barra del Canvas
+    public UnityEngine.UI.Image barraVida; 
 
     public int CurrentHealth
     {
@@ -33,9 +33,14 @@ public class Vida : MonoBehaviour
 
         currentHealth -= amount;
 
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
+
         Debug.Log(gameObject.name + " recibió daño");
 
-        ActualizarBarra(); // ← actualizar visualmente
+        ActualizarBarra();
 
         if (currentHealth <= 0)
         {
@@ -47,8 +52,7 @@ public class Vida : MonoBehaviour
     {
         if (barraVida != null)
         {
-            barraVida.fillAmount =
-                (float)currentHealth / maxHealth;
+            barraVida.fillAmount = (float)currentHealth / maxHealth;
         }
     }
 
@@ -60,8 +64,17 @@ public class Vida : MonoBehaviour
         }
         else
         {
+            // Liberamos el ratón para poder usar los botones del Game Over
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            // Por si el juego estaba pausado
+            Time.timeScale = 1f;
+
             Destroy(gameObject);
-            SceneManager.LoadScene(6);
+
+            // Carga la escena de Game Over
+            SceneManager.LoadScene(5);
         }
     }
 

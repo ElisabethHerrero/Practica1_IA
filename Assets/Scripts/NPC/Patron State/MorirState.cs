@@ -7,13 +7,10 @@ public class MorirState : State
     private float deathTimer = 2f; //Tiempo que tarda en desaparecer tras morir
     public MorirState(NPCController npc) : base(npc) { }
 
-    //
-
     private Renderer rend;
     private Color originalColor;
-    //private float flashSpeed = 10f;
 
-    //Función que se ejecuta al entrar en estado de muerte
+    //Funciï¿½n que se ejecuta al entrar en estado de muerte
     public override void Enter()
     {
         npc.agent.isStopped = true; //Detiene el movimiento del NavMeshAgent (el NPC deja de moverse)
@@ -32,9 +29,8 @@ public class MorirState : State
 
     public override void Update()
     {
-        deathTimer -= Time.deltaTime; //Cuenta atrás para que el NPC no desaparezca inmediatamente
+        deathTimer -= Time.deltaTime; //Cuenta atrï¿½s para que el NPC no desaparezca inmediatamente
 
-        //
         npc.transform.localScale = Vector3.Lerp(
         npc.transform.localScale,
         Vector3.zero,
@@ -53,9 +49,6 @@ public class MorirState : State
             GameObject.Destroy(npc.gameObject);
         }
 
-
-
-        //
 
 
         if (deathTimer <= 0)

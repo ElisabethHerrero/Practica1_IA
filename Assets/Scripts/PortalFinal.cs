@@ -55,7 +55,7 @@ public class PortalFinal : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
 
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(4);
     }
 
     private void OnTriggerEnter(Collider other)

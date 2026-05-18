@@ -16,6 +16,14 @@ public class NPCController : MonoBehaviour
     public float detectionRange = 10f;
     public float loseRange = 15f;
 
+        [Header("Visiï¿½n")]
+    public float viewAngle = 100f;     // ï¿½ngulo total del cono de visiï¿½n (ej: 100ï¿½)
+    public float viewDistance = 10f;   // Distancia mï¿½xima a la que puede ver
+
+    [Header("Capas")]
+    public LayerMask playerLayer;     // Capa donde estï¿½ el jugador
+    public LayerMask obstacleLayer;   // Capa de obstï¿½culos (paredes, etc.)
+
     private State currentState;
 
     //
@@ -53,7 +61,7 @@ public class NPCController : MonoBehaviour
         return Vector3.Distance(transform.position, player.position);
     }
 
-    //para la fábrica de NPCs
+    //para la fï¿½brica de NPCs
 
     public void Initialize(NPCData data, Transform[] patrols)
     {
@@ -74,7 +82,7 @@ public class NPCController : MonoBehaviour
             vidaComponent.Initialize(data.vida);
         }
 
-        // DAÑO
+        // DAï¿½O
         Armas weapon = GetComponentInChildren<Armas>();
 
         if (weapon != null)
@@ -86,26 +94,7 @@ public class NPCController : MonoBehaviour
     }
 
 
-    //hasta aquí
-
-    
-
-
-
-
-    [Header("Visión")]
-    public float viewAngle = 100f;     // Ángulo total del cono de visión (ej: 100º)
-    public float viewDistance = 10f;   // Distancia máxima a la que puede ver
-
-    [Header("Capas")]
-    public LayerMask playerLayer;     // Capa donde está el jugador
-    public LayerMask obstacleLayer;   // Capa de obstáculos (paredes, etc.)
-
-
-
-
-
-    //Aquí para dañar
+    //Aquï¿½ para daï¿½ar
     [HideInInspector]
     public Atacar attackController;
 
@@ -114,9 +103,9 @@ public class NPCController : MonoBehaviour
     {
         if (player == null) return false;
 
-        // ---------- DIRECCIÓN Y DISTANCIA ----------
+        // DIRECCIï¿½N Y DISTANCIA 
 
-        // Vector desde el enemigo hacia el jugador (dirección)
+        // Vector desde el enemigo hacia el jugador (direcciï¿½n)
         Vector3 dirToPlayer = (player.position - transform.position).normalized;
 
         // Distancia real entre enemigo y jugador
@@ -124,29 +113,29 @@ public class NPCController : MonoBehaviour
 
         // Primer filtro: comprobar distancia (extra seguridad)
         if (distanceToPlayer > viewDistance)
-            return false; // Si está demasiado lejos, no seguimos comprobando
+            return false; // Si estï¿½ demasiado lejos, no seguimos comprobando
 
-        // ---------- FILTRO DE ÁNGULO ----------
+        //  FILTRO DE ï¿½NGULO 
 
-        // Calcula el ángulo entre hacia dónde mira el enemigo y el jugador
+        // Calcula el ï¿½ngulo entre hacia dï¿½nde mira el enemigo y el jugador
         float angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
 
-        // Si está dentro del cono de visión (mitad a cada lado)
+        // Si estï¿½ dentro del cono de visiï¿½n (mitad a cada lado)
         if (angleToPlayer < viewAngle / 2f)
         {
-            // ---------- FILTRO DE OBSTÁCULOS (RAYCAST) ----------
+            //  FILTRO DE OBSTï¿½CULOS (RAYCAST) 
 
             // Lanza un rayo desde el enemigo hacia el jugador
-            // Si NO choca con obstáculos antes de llegar, lo ve
+            // Si NO choca con obstï¿½culos antes de llegar, lo ve
             if (!Physics.Raycast(transform.position, dirToPlayer, distanceToPlayer, obstacleLayer))
             {
                 return true;
-                //Debug.Log("Jugador detectado"); // VISIÓN EXITOSA
+                //Debug.Log("Jugador detectado"); // VISIï¿½N EXITOSA
             }
             else
             {
                 return false;
-                //Debug.Log("Hay una pared en medio"); // Algo bloquea la visión
+                //Debug.Log("Hay una pared en medio"); // Algo bloquea la visiï¿½n
             }
         }
         return false;
@@ -158,24 +147,21 @@ public class NPCController : MonoBehaviour
         ChangeState(new ChaseState(this));
     }
 
+// para poder visualizarlo en la escena mejor
     private void OnDrawGizmos()
     {
-        // Dibuja el rango de visión en la escena (esfera)
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, viewDistance);
 
-        // Calcula los límites del ángulo (izquierda y derecha)
         Vector3 leftBoundary = Quaternion.Euler(0, -viewAngle / 2f, 0) * transform.forward;
         Vector3 rightBoundary = Quaternion.Euler(0, viewAngle / 2f, 0) * transform.forward;
 
-        // Dibuja las líneas del cono de visión
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, leftBoundary * viewDistance);
         Gizmos.DrawRay(transform.position, rightBoundary * viewDistance);
     }
 
-
-    //
 
     public void SetPlayer(Transform target)
     {

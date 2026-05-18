@@ -29294,7 +29294,6 @@ MonoBehaviour:
   player: {fileID: 1443935507}
   detectionRange: 10
   loseRange: 15
-  vida: 100
   viewAngle: 100
   viewDistance: 10
   playerLayer:
@@ -29303,6 +29302,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  vida: 100
   attackController: {fileID: 0}
 --- !u!195 &580645677
 NavMeshAgent:
@@ -35572,7 +35572,7 @@ RectTransform:
   m_GameObject: {fileID: 682865553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.9712405, y: 3.925822, z: 3.8496}
+  m_LocalScale: {x: 21.412863, y: 12.058555, z: 11.824431}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 403353124}
@@ -41505,7 +41505,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.98
+  m_Radius: 1.25
   m_Height: 2.19
   m_Direction: 1
   m_Center: {x: -1.05, y: 0, z: 0}

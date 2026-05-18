@@ -478,12 +478,12 @@ PrefabInstance:
     - target: {fileID: 8995988549069391189, guid: aa7a823091758414aa4e534fc8303df4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 288.33
+      value: 265
       objectReference: {fileID: 0}
     - target: {fileID: 8995988549069391189, guid: aa7a823091758414aa4e534fc8303df4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.41
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8995988549069391189, guid: aa7a823091758414aa4e534fc8303df4,
         type: 3}
@@ -974,7 +974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -730.9754, y: 750}
+  m_AnchoredPosition: {x: -816, y: 767}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &921880539
@@ -997,7 +997,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Presiona Enter para jugar.
+  m_text: Haz click en las flechas en la caja para ir adelante/atras. Enter para
+    saltar instrucciones.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0317dec597024de4cae125deccbe0c8e, type: 2}
   m_sharedMaterial: {fileID: -8425272092576991918, guid: 0317dec597024de4cae125deccbe0c8e,
@@ -1025,8 +1026,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1063,7 +1064,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -26.393763, z: -1470.8805, w: -97.27799}
+  m_margin: {x: 0, y: -26.393763, z: -1641.814, w: -80.20179}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
